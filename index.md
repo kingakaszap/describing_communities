@@ -110,7 +110,7 @@ library (tidyverse) # contains packages dplyr for efficient data manipulation,
 library (ggthemes) # we will use ggthemes to add a cool theme to our graphs
 ```
 
-Let's import the dataset. This is a fake dataset created for this tutorial, but let's imagine it's the actual field data of your bird observations you collected in the parks. The dataset is in the ZIP folder you downloaded earlier, under the name `field_data.csv`. You can import it manually with clicking on *Import dataset* -\> *From Text (base)*. But, of course, you can also do it with code.
+Let's import the dataset. This is a fake dataset created for this tutorial, but let's imagine it's the actual field data of your bird observations you collected in the parks. The dataset is in the ZIP folder you downloaded earlier within a folder called "data", under the name `field_data.csv`. You can import it manually with clicking on *Import dataset* -\> *From Text (base)*. But, of course, you can also do it with code.
 
 ``` r
 # Import the dataset field_data
@@ -138,7 +138,7 @@ Let's do some data wrangling ! We need our data to be in a very specific format 
 
 In our data, our variables for each observation are: Park (Where was the observation recorded?), Species (What bird are we talking about?) and Abundance (How many individuals of said bird did we count in the specified park?). So, we have to shorten our dataset to 3 columns instead of the current 21. We can leave the first column alone, but we need to do some work on columns 2:21!
 
-We clean our data in one command with using dplyr's *fabulous* pipe ( `%>%`) operator. (Honestly, they make your life (and code) so much easier! Learn more about `dplyr` and pipes here (add CC link).
+We clean our data in one command using dplyr's *fabulous* pipe ( `%>%`) operator. (Honestly, they make your life (and code) so much easier! Learn more about `dplyr` and pipes here (add CC link).
 
 ``` r
 parks_tidy <- parks %>% 
