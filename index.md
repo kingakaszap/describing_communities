@@ -6,7 +6,7 @@
 
 # Tutorial Steps
 
- ### <a href="#section1"> 1. Introduction</a>
+ # <a href="#section1"> 1. Introduction</a>
  
  ### <a href="#section2"> 2. Setting the scene</a>
  
