@@ -1,6 +1,6 @@
  # <p align = "center">   Describing communities in R </p>
   
-*<p align ="center"> A tutorial by Kinga Kaszap </p>*
+<p align ="center"> A tutorial by Kinga Kaszap </p>
 
 # Tutorial Aims:
 
