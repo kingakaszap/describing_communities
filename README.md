@@ -16,6 +16,8 @@ If you have any questions or suggestions, contact me at s2024589@ed.ac.uk.
 
 The [data](data) folder contains the dataset used in the tutorial.
 
+The [etiquette](etiquette) folder contains the coding etiquette for this repo.
+
 The [outputs](outputs) folder contains the figures produced when completing the tutorial.
 
 The [script](script) folder contains the R code used in the tutorial.
