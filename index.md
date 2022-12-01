@@ -7,17 +7,24 @@
 # Tutorial Steps
 
  #### <a href="#section1"> 1. Introduction</a>
+ 
  #### <a href="#section2"> 2. Setting the scene</a>
+ 
  #### <a href="#section3"> 3. Importing and tidying field data</a>
+ 
  #### <a href="#section4"> 4. Species richness</a>
  - calculating richness
  - visualising differences in species richness
+ 
  #### <a href="#section5"> 5. Calculating diversity indices</a>
  - Simpson's dominance
  - Shannon-Wiener diversity index
  - Making a summary table
+
  #### <a href="#section6"> 6. Basic visualisation - SAD diagrams</a>
+ 
  #### <a href="#section7"> 7. A bit more complex visualisation - Rank-Abundnce diagrams</a>
+ 
  #### <a href="#section8"> 8. Summary</a>
 
 <a name="section1"></a>
