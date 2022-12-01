@@ -29,8 +29,6 @@ All the material you need to complete this tutorial can be found in [this reposi
 
 <a name="section2"></a>
 # Setting the scene
-![irina-iriser-2Y4dE8sdhlc-unsplash](https://user-images.githubusercontent.com/114161055/205040811-c8287fc2-2730-491f-94f1-7935a9ac327f.jpg)
-*Photo by Irina Iriser on Unsplash*
 
 Have you ever wondered how communities occupying different habitats (or micro-habitats) vary? Or whether habitat types vary in the number of species they accomodate? For example, how your backyard might differ from the nearby forest?
 
