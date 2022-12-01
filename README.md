@@ -15,8 +15,13 @@ If you have any questions or suggestions, contact me at s2024589@ed.ac.uk.
 ## Structure of this repository:
 
 The [data](data) folder contains the dataset used in the tutorial.
+
 The [outputs](outputs) folder contains the figures produced when completing the tutorial.
+
 The [script](script) folder contains the R code used in the tutorial.
+
 The [index](index.md) file holds the markdown version of the tutorial.
+
+The [references](references.md) includes references of all papers and websites I used when creating this tutorial. 
 
 
