@@ -1,4 +1,4 @@
-  # <p align = "center">   Describing communities in R </p>
+ # <p align = "center">   Describing communities in R </p>
   
 *<p align ="center"> A tutorial by Kinga Kaszap </p>*
 
@@ -470,7 +470,6 @@ Well done for making it this far! There's not much left to do but to summarize w
 
 
 #
-
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
