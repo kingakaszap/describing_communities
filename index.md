@@ -6,25 +6,18 @@
 
 # Tutorial Steps
 
-  <a href="#section1"> 1. Introduction</a>
- 
-  <a href="#section2"> 2. Setting the scene</a>
- 
-  <a href="#section3"> 3. Importing and tidying field data</a>
- 
-  <a href="#section4"> 4. Species richness</a>
+ <a href="#section1"> 1. Introduction</a>
+ <a href="#section2"> 2. Setting the scene</a>
+ <a href="#section3"> 3. Importing and tidying field data</a>
+ <a href="#section4"> 4. Species richness</a>
  - calculating richness
  - visualising differences in species richness
- 
-  <a href="#section5"> 5. Calculating diversity indices</a>
+ <a href="#section5"> 5. Calculating diversity indices</a>
  - Simpson's dominance
  - Shannon-Wiener diversity index
  - Making a summary table
-
  <a href="#section6"> 6. Basic visualisation - SAD diagrams</a>
- 
  <a href="#section7"> 7. A bit more complex visualisation - Rank-Abundnce diagrams</a>
- 
  <a href="#section8"> 8. Summary</a>
 
 <a name="section1"></a>
@@ -202,10 +195,8 @@ For this small dataset, you might say species richness is easy to calculate by h
     axis.text.x = element_text(angle = 45, hjust = 1)))
     #tilting the text of the x axis
 ```
-You should get this plot:
-
 <p align="center">
-<img src="https://user-images.githubusercontent.com/114161055/205072968-2ca77c3b-caf1-4ebc-8dc9-7cc7c9cb49b0.png" alt="image" width="450"/>
+<img src="barplot_richness.png" alt="image" width="450"/>
 </p>
 
 With only 4 sites, a barplot is not much different from the dataframe in terms of visualisation - however, it would show be more if we were working with larger datasets, containing, let's say, 100 sites. Remember that the aim of this tutorial is just to introduce you to exploring community composition - hence why our dataset is simple and small! Let's save our plot - we can also do this with code using `ggsave` and entering the folder within the working directory we want to save it to.
@@ -329,14 +320,14 @@ This is how a SAD diagram with log scale would look like - we will just stick to
 
 <img src="https://user-images.githubusercontent.com/114161055/205047016-857e8793-8845-4c67-9bed-f3cff20535dd.png" alt="image" height="300"/>
 
-*source: Khaluzny et al. 2015*
+*image sourced from Khaluzny et al. 2015*
 
 
 For making a SAD diagram for each of our parks, we will first make a new dataset: one that contains the *frequency of each abundance value WITHIN a site.* (For example, how many species in Figgate Park have an abundance of 10 individuals?)
 
 For this, we will create a new dataframe called parks_frequency.
 
-```r
+```{r}
 parks_frequency<- parks_tidy %>% 
   #making a new dataframe by passing parks_tidy through a pipe
   group_by(site, abundance) %>% 
@@ -346,6 +337,8 @@ parks_frequency<- parks_tidy %>%
   ungroup()
   #removing groupings
 ```
+
+For larger datasets, you would use abundance classes - add something??
 
 With `length(species)`, we ask R to simply count the number of observations in the `species` column. The important part to note is that we already grouped the data into `site`, and within that grouping, to `abundance` - so R will count the number of `species` corresponding each abundance value within each park.
 
@@ -373,11 +366,9 @@ Great! We now have a new dataframe, based on which we will make our SAD graphs. 
         #increasing font size
 ```
 
-This is how our plots look like:
+This is how our plot looks like:
 
-<p align = "center">
 <img src="https://user-images.githubusercontent.com/114161055/204835023-7a553909-a56d-4561-8395-62c5b2f744a0.png" alt="image" width="400" height="400"/>
-<p/>
 
 Interesting. Definitely not the best plot - what are those gaps doing in the Meadows and Craigmillar? Also, why is Figgate just one big block? Worry not - this all has to do with oversimplification, and the `scale = free` command. In real life, log-transformation and abundance classes instead of discrete numbers are used so that there are no "empty gaps" like in our Meadows and Blackford plots. And using a uniform scale would get rid of the "block" that currently represents Figgate park. But we will not bother with that - there are still many inferences we can make from our graph.
 
@@ -395,7 +386,7 @@ Still, there might be a better way to visualise evenness. That brings us to the 
 <a name="section7"></a>
 # A bit more complex visualisation - Rank-Abundance diagrams
 
-Let's have a look at how we can plot the same data a different way! A common way to visualise community composition is creating Rank-Abundance diagrams. These are similar to SAD graphs as they visualise evenness and commonness/rarity. Species are assigned a **rank** based on abundance, with most abundant ranked 1 and least abundant S (where S is the number of species in the community). Like our diversity indices, rank-abundance requires a knowledge of the **relative abundance** of each species. We then plot relative abundance against rank to visualise the community. This way, we will get rid of the annoying gaps present in the previous graphs, and are able to visualise richness as well as evenness, as we have individual species, represented by their rank on the x axis!
+Let's have a look at how we can plot the same data a different way! A common way to visualise community composition is creating Rank-Abundance diagrams. These are similar to SAD graphs as they visualise evenness and commonness/rarity. Species are assigned a **rank** based on abundance, with most abundant ranked 1 and least abundant S (where S is the number of species in the community). Like our diversity indices, rank-abundance requires a knowledge of the **relative abundance** of each species. We then plot relative abundance against rank to visualise the community. This way, we will get rid of the annoying gaps present in the previous graphs, and are able to visualise richness as well as evenness!.
 
 Since this is a general tutorial, and it is already getting too long, we will only include the very basics of rank-abundance diagrams. However, if you want to know more about them, and how to make them prettier, or starting from scratch, check out [this](https://darahubert.github.io/rank-abundance-tutorial/) tutorial.
 
@@ -479,3 +470,4 @@ Well done for making it this far! There's not much left to do but to summarize w
 		</h3>
 	</li>
 </ul>
+
