@@ -1,15 +1,15 @@
 # Part 1 - title & import data & libraries----
 
-#Describing communities
-#Kinga Kaszap
-#23/11/2022
+# Describing communities
+# Kinga Kaszap
+# 23/11/2022
 
-#Describing communities - or any other informative title
-#Your Name
-#Date
-#Any other comments you want to add
+# Describing communities - or any other informative title
+# Your Name
+# Date
+# Any other comments you want to add
 
-parks<- read.csv("data/field_data.csv")
+parks<- read.csv ("data/field_data.csv")
 # add your own filepath
 
 # load libraries
