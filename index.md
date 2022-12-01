@@ -6,23 +6,24 @@
 
 # Tutorial Steps
 
-  <a href="#section1"> 1. Introduction</a>
+ <a href="#section1"> 1. Introduction</a>
  
-  <a href="#section2"> 2. Setting the scene</a>
+ <a href="#section2"> 2. Setting the scene</a>
  
-  <a href="#section3"> 3. Importing and tidying field data</a>
+ <a href="#section3"> 3. Importing and tidying field data</a>
  
-  <a href="#section4"> 4. Species richness</a>
+ <a href="#section4"> 4. Species richness</a>
+ 
  - calculating richness
  - visualising differences in species richness
  
-  <a href="#section5"> 5. Calculating diversity indices</a>
+ <a href="#section5"> 5. Calculating diversity indices</a>
  - Simpson's dominance
  - Shannon-Wiener diversity index
  - Making a summary table
-
- <a href="#section6"> 6. Basic visualisation - SAD diagrams</a>
  
+ <a href="#section6"> 6. Basic visualisation - SAD diagrams</a>
+
  <a href="#section7"> 7. A bit more complex visualisation - Rank-Abundnce diagrams</a>
  
  <a href="#section8"> 8. Summary</a>
@@ -32,12 +33,10 @@
 
 This tutorial will introduce some basic methods of describing and comparing biological communities using R. It builds on some methods and concepts used in community ecology, but if you've never done community ecology before, that's also fine! The concepts used are relatively simple, and will be explained in detail in the tutorial. The tutorial is aimed at beginners, but expects you to have downloaded RStudio and are somewhat familiar with its layout. If you are completely new to R and RStudio, check out this tutorial! (Insert coding club reference) We will also be making plots to visualise our data with ggplot. The terminology used when plotting with ggplot takes practice to grasp, and since it is not the main focus of this tutorial, it is not explained in detail. So don't worry if that bit is slightly confusing! If you're interested in data visualisation, check out [this](https://ourcodingclub.github.io/tutorials/datavis/) coding club tutorial.
 
-All the material you need to complete this tutorial can be found in [this repository](link%20to%20repo). Click on `Code/ Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
+All the material you need to complete this tutorial can be found in [this repository](https://github.com/kingakaszap/describing_communities). Click on `Code/ Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
 <a name="section2"></a>
 # Setting the scene
-![irina-iriser-2Y4dE8sdhlc-unsplash](https://user-images.githubusercontent.com/114161055/205040811-c8287fc2-2730-491f-94f1-7935a9ac327f.jpg)
-*Photo by Irina Iriser on Unsplash*
 
 Have you ever wondered how communities occupying different habitats (or micro-habitats) vary? Or whether habitat types vary in the number of species they accomodate? For example, how your backyard might differ from the nearby forest?
 
@@ -51,7 +50,7 @@ No? Maybe it's just me then. Anyway, community ecology is a fascinating branch o
 In this tutorial, to keep it simple and easy to grasp, we are using a small scale. But the basic concepts introduced can be applied on the global scale as well. Of course, this comes at the cost of using way more complicated equations, like this:
 
 <img src="https://user-images.githubusercontent.com/114161055/204779399-bda43e61-5647-4162-a74b-b0a816ff0dd5.png" alt="image" width="364"/>
-*(from Jost et al 2006)
+*(from Jost et al 2006)*
 
 Don't worry, since our scale is small and the aim of this tutorial is to introduce you to the basic, the equations we use will be a lot easier to understand.
 
@@ -88,9 +87,9 @@ Open RStudio, and click on `File/New File/R Script`. It is good practice to "int
 Now, before we import our data, we need to set our working directory. This is a folder on your computer where all your work, including this script, data, plots, etc) should be saved. You can set your working directory manually by clicking on `Session` on the top left, and choosing `Set working directory/Choose directory`. However, you can also do it with code:
 
 ``` r
-setwd ("your/file/path") #enter the filepath to the working directory you want to work in
+setwd ("your/file/path") # enter the filepath to the working directory you want to work in
 
-getwd() #check that your working directory is where you wanted it 
+getwd() # check that your working directory is where you wanted it 
 ```
 
 Before we start working with our data, we will load the packages we will be using throughout the script. For this tutorial, you only need two. If you already have these packages installed, just load them with the `library` command. If you haven't used them before, you will need to install them first:
@@ -114,7 +113,7 @@ library (ggthemes) # we will use ggthemes to add a cool theme to our graphs
 Let's import the dataset. This is a fake dataset created for this tutorial, but let's imagine it's the actual field data of your bird observations you collected in the parks. The dataset is in the ZIP folder you downloaded earlier, under the name `field_data.csv`. You can import it manually with clicking on *Import dataset* -\> *From Text (base)*. But, of course, you can also do it with code.
 
 ``` r
-# Import the dataset
+# Import the dataset field_data
 parks<- read.csv("~Desktop/Users/Kinga/Tutorial/field_data") # Enter your own filepath here.
 # the dataset is now assigned to a dataframe object called "parks".
 ```
@@ -126,9 +125,9 @@ Let's have a look at our data!
 ``` r
 # explore data
 
-glimpse (parks) #literally have a glimpse of our data
+glimpse (parks) # literally have a glimpse of our data
 head (parks) # first few observations
-names (parks) #column names
+names (parks) # column names
 ```
 
 Now we have a feel of our data. The `glimpse` function tells us we have 4 rows (one row for each site), and 21 columns. We can also see that the column names 2-21 are the bird species we observed (one for each species), and the columns themselves contain the abundance of said birds in each park, if they were present, plus field notes ( like `5(could be morhen)`). `R` also tells us the what type of data it thinks each column is - we can see that some of our columns contain character (`<chr>`), while others integer (`<int>`) variables.
@@ -202,17 +201,17 @@ For this small dataset, you might say species richness is easy to calculate by h
     axis.text.x = element_text(angle = 45, hjust = 1)))
     #tilting the text of the x axis
 ```
-You should get this plot:
+Your plot should look like this:
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/114161055/205072968-2ca77c3b-caf1-4ebc-8dc9-7cc7c9cb49b0.png" alt="image" width="450"/>
+<img src="https://user-images.githubusercontent.com/114161055/205092070-c63c280c-cd90-4306-86d1-28c9e656caaf.png" alt="image" width="450"/>
 </p>
 
 With only 4 sites, a barplot is not much different from the dataframe in terms of visualisation - however, it would show be more if we were working with larger datasets, containing, let's say, 100 sites. Remember that the aim of this tutorial is just to introduce you to exploring community composition - hence why our dataset is simple and small! Let's save our plot - we can also do this with code using `ggsave` and entering the folder within the working directory we want to save it to.
 
 ``` r
-ggsave(barplot_richness, file="background/barplot_richness.png", width= 6, height=6)
-#save our plot - don't forget to enter your own filepath!
+ggsave(barplot_richness, file = "outputs/richnessplot.png", width = 6, height = 6)
+# save our plot - don't forget to enter your own filepath!
 ```
 
 We can intuitively tell these values don't tell us too much - for example, what species were there? How much did the species composition overlap?
@@ -286,7 +285,7 @@ Great! Now let's make a summary table which includes all the indices we have int
 
 ``` r
 summary<- parks_tidy %>% 
-#calling the new dataframe "summary"
+# calling the new dataframe "summary"
   group_by(site) %>% 
   # grouping the data into parks
   summarise(sp.richness = length(unique(species)),
@@ -376,8 +375,8 @@ Great! We now have a new dataframe, based on which we will make our SAD graphs. 
 This is how our plots look like:
 
 <p align = "center">
-<img src="https://user-images.githubusercontent.com/114161055/204835023-7a553909-a56d-4561-8395-62c5b2f744a0.png" alt="image" width="400" height="400"/>
-<p/>
+<img src="https://user-images.githubusercontent.com/114161055/204835023-7a553909-a56d-4561-8395-62c5b2f744a0.png" alt="image" width="400" />
+</p>
 
 Interesting. Definitely not the prettiest of plots - what are those gaps doing in the Meadows and Craigmillar? Also, why is Figgate just one big block? Worry not - this all has to do with oversimplification, and the `scale = free` command. In real life, log-transformation and abundance classes instead of discrete numbers are used so that there are not as many "empty gaps" like in our Meadows and Blackford plots. And using a uniform scale would get rid of the "block" that currently represents Figgate park. But we will not bother with that - there are still many inferences we can make from our graph.
 
@@ -441,10 +440,10 @@ Note that unlike for the SAD diagrams, we did not include `scale = free` in the 
 You should now have this plot:
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/114161055/205075409-8eca1d66-f4f5-4fd4-a0e8-7326452d8c24.png" alt="image" width="500" height="500"/>
+<img src="https://user-images.githubusercontent.com/114161055/205093599-1a880f75-97af-45f9-965f-806e8d993e37.png" alt="image" width="500" height="500"/>
 </p>
 
-Let's interpret this! On the x axis, we have ranks - species ranked from most to least abundant within each park. Basically, this is almost like having "Species" on the x axis, only they are *already* ranked by what values they take on the y axis. On the y axis, we have relative abundance, again, within parks - so the position of, say, the first "dot" tells us the relative abundance of the most abundant species (assigned rank 1), the second about the relative abundance of the second most abundant species, and so on. In other words, it tells us *how dominant* the most abundant species is in the environment. 
+Let's interpret this! On the x axis, we have ranks - species ranked from most to least abundant within each park. Basically, this is almost like having "Species" on the x axis, only they are *already* ranked by the values they take on the x axis. On the y axis, we have relative abundance, again, within parks - so the position of, say, the first "dot" tells us the relative abundance of the most abundant species (assigned rank 1), the second about the relative abundance of the second most abundant species, and so on. In other words, it tells us *how dominant* the most abundant species is in the environment. 
 
 I mentioned before that we can also infer richness from these graphs - indeed, the number of species present is represented by the number of dots in each graph. We can see what we already know from the previous sections: that Figgate and Craigmillar have more species than the Meadows and Blackford. However, we can also intuitively tell about evenness (Probably more intuitively than from the SAD graphs). It is not hard to tell that since the line connecting the dots is straight, or nearly straight in the case of Blackford and Figgate, individuals are evenly distributed among species in these parks. However, the large drop between the first and the second dot in the graphs for Craigmillar and the Meadows show that these communities are uneven, and have one **highly dominant** species. 40% of all individuals belong to the same species in Craigmillar, *despite there being 20 species present*, and half of the birds observed in the Meadows were the same species. 
 
@@ -466,6 +465,7 @@ Well done for making it this far! There's not much left to do but to summarize w
 - How to visualise community composition with rank-abundance diagrams, and how to infer them.
 
 
+
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 #### If you have any questions or comments about this tutorial, please contact me on s2024589@ed.ac.uk
@@ -477,5 +477,4 @@ Well done for making it this far! There's not much left to do but to summarize w
 		</h3>
 	</li>
 </ul>
-
 
