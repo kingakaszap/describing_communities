@@ -202,8 +202,10 @@ For this small dataset, you might say species richness is easy to calculate by h
     axis.text.x = element_text(angle = 45, hjust = 1)))
     #tilting the text of the x axis
 ```
+You should get this plot:
+
 <p align="center">
-<img src="barplot_richness.png" alt="image" width="450"/>
+<img src="https://user-images.githubusercontent.com/114161055/205072968-2ca77c3b-caf1-4ebc-8dc9-7cc7c9cb49b0.png" alt="image" width="450"/>
 </p>
 
 With only 4 sites, a barplot is not much different from the dataframe in terms of visualisation - however, it would show be more if we were working with larger datasets, containing, let's say, 100 sites. Remember that the aim of this tutorial is just to introduce you to exploring community composition - hence why our dataset is simple and small! Let's save our plot - we can also do this with code using `ggsave` and entering the folder within the working directory we want to save it to.
@@ -327,7 +329,7 @@ This is how a SAD diagram with log scale would look like - we will just stick to
 
 <img src="https://user-images.githubusercontent.com/114161055/205047016-857e8793-8845-4c67-9bed-f3cff20535dd.png" alt="image" height="300"/>
 
-*image sourced from Khaluzny et al. 2015*
+*source: Khaluzny et al. 2015*
 
 
 For making a SAD diagram for each of our parks, we will first make a new dataset: one that contains the *frequency of each abundance value WITHIN a site.* (For example, how many species in Figgate Park have an abundance of 10 individuals?)
@@ -344,8 +346,6 @@ parks_frequency<- parks_tidy %>%
   ungroup()
   #removing groupings
 ```
-
-For larger datasets, you would use abundance classes - add something??
 
 With `length(species)`, we ask R to simply count the number of observations in the `species` column. The important part to note is that we already grouped the data into `site`, and within that grouping, to `abundance` - so R will count the number of `species` corresponding each abundance value within each park.
 
@@ -373,11 +373,13 @@ Great! We now have a new dataframe, based on which we will make our SAD graphs. 
         #increasing font size
 ```
 
-This is how our plot looks like:
+This is how our plots look like:
 
+<p align = "center">
 <img src="https://user-images.githubusercontent.com/114161055/204835023-7a553909-a56d-4561-8395-62c5b2f744a0.png" alt="image" width="400" height="400"/>
+<p/>
 
-Interesting. Definitely not the best plot - what are those gaps doing in the Meadows and Craigmillar? Also, why is Figgate just one big block? Worry not - this all has to do with oversimplification, and the `scale = free` command. In real life, log-transformation and abundance classes instead of discrete numbers are used so that there are no "empty gaps" like in our Meadows and Blackford plots. And using a uniform scale would get rid of the "block" that currently represents Figgate park. But we will not bother with that - there are still many inferences we can make from our graph.
+Interesting. Definitely not the prettiest of plots - what are those gaps doing in the Meadows and Craigmillar? Also, why is Figgate just one big block? Worry not - this all has to do with oversimplification, and the `scale = free` command. In real life, log-transformation and abundance classes instead of discrete numbers are used so that there are not as many "empty gaps" like in our Meadows and Blackford plots. And using a uniform scale would get rid of the "block" that currently represents Figgate park. But we will not bother with that - there are still many inferences we can make from our graph.
 
 Let's save it first:
 
@@ -386,7 +388,7 @@ ggsave(sad, file =" background/sad.png", width = 6, height = 6)
 # save our plot - don't forget to enter your own filepath!
 ```
 
-These plots represent *evenness* - and intuitively, based on the bars, we can tell that Figgate is *very even* - that is, there are only 4 abundance classes present, and an equal number of species belong to each - it is the equal height of the bars that make that plot look like a block. How unlikely! Maybe, just maybe this surprising evenness has to do with the fact that we are working with a fake dataset? Who knows. Anyway, the differences shown by our indices in the previous part are now also more apparent - there is certainly a big difference between the SAD graph for Figgate and Craigmillar, and those for Meadows and Blackford. Figgate and Blackford have a relatively even species composition, whereas the other two look very uneven - most species have only one individual present, and there one species dominates - by having an abundance of 30 individuals in Craigmillar and 10 in the Meadows.
+These plots represent *evenness* - and intuitively, based on the bars, we can tell that Figgate is *very even* - that is, there are only 4 abundance classes present, and an equal number of species belong to each - it is the equal height of the bars that make that plot look like a block. How unlikely! Maybe, just maybe this surprising evenness has to do with the fact that we are working with a fake dataset? Who knows. Anyway, the differences shown by our indices in the previous part are now also more apparent - there is certainly a big difference between the SAD graph for Figgate and Craigmillar, and those for Meadows and Blackford. Figgate and Blackford have a relatively even species composition, whereas the other two look very uneven - most species have only one individual present, and there is one highly dominant species - by having an abundance of 30 individuals in Craigmillar and 10 in the Meadows.
 
 Still, there might be a better way to visualise evenness. That brings us to the last section of this tutorial - Rank-Abundance plots.
 
@@ -439,10 +441,10 @@ Note that unlike for the SAD diagrams, we did not include `scale = free` in the 
 You should now have this plot:
 
 <p align="center">
-<img src="rankabundance.png" alt="image" width="500" height="500"/>
+<img src="https://user-images.githubusercontent.com/114161055/205075409-8eca1d66-f4f5-4fd4-a0e8-7326452d8c24.png" alt="image" width="500" height="500"/>
 </p>
 
-Let's interpret this! On the x axis, we have ranks - species ranked from most to least abundant within each park. On the y axis, we have relative abundance, again, within parks - so the position of, say, the first "dot" tells us the relative abundance of the most abundant species (assigned rank 1), the second about the relative abundance of the second most abundant species, and so on. In other words, it tells us *how dominant* the most abundant species is in the environment. 
+Let's interpret this! On the x axis, we have ranks - species ranked from most to least abundant within each park. Basically, this is almost like having "Species" on the x axis, only they are *already* ranked by what values they take on the y axis. On the y axis, we have relative abundance, again, within parks - so the position of, say, the first "dot" tells us the relative abundance of the most abundant species (assigned rank 1), the second about the relative abundance of the second most abundant species, and so on. In other words, it tells us *how dominant* the most abundant species is in the environment. 
 
 I mentioned before that we can also infer richness from these graphs - indeed, the number of species present is represented by the number of dots in each graph. We can see what we already know from the previous sections: that Figgate and Craigmillar have more species than the Meadows and Blackford. However, we can also intuitively tell about evenness (Probably more intuitively than from the SAD graphs). It is not hard to tell that since the line connecting the dots is straight, or nearly straight in the case of Blackford and Figgate, individuals are evenly distributed among species in these parks. However, the large drop between the first and the second dot in the graphs for Craigmillar and the Meadows show that these communities are uneven, and have one **highly dominant** species. 40% of all individuals belong to the same species in Craigmillar, *despite there being 20 species present*, and half of the birds observed in the Meadows were the same species. 
 
@@ -463,8 +465,6 @@ Well done for making it this far! There's not much left to do but to summarize w
 - How to make a SAD diagram, and the drawbacks of using this graph with a small sample size
 - How to visualise community composition with rank-abundance diagrams, and how to infer them.
 
-
-#
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
