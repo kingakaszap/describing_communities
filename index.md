@@ -336,7 +336,7 @@ For making a SAD diagram for each of our parks, we will first make a new dataset
 
 For this, we will create a new dataframe called parks_frequency.
 
-```{r}
+```r
 parks_frequency<- parks_tidy %>% 
   #making a new dataframe by passing parks_tidy through a pipe
   group_by(site, abundance) %>% 
@@ -446,6 +446,7 @@ You should now have this plot:
 
 Let's interpret this! On the x axis, we have ranks - species ranked from most to least abundant within each park. Basically, this is almost like having "Species" on the x axis, only they are *already* ranked by what values they take on the y axis. On the y axis, we have relative abundance, again, within parks - so the position of, say, the first "dot" tells us the relative abundance of the most abundant species (assigned rank 1), the second about the relative abundance of the second most abundant species, and so on. In other words, it tells us *how dominant* the most abundant species is in the environment. 
 
+
 I mentioned before that we can also infer richness from these graphs - indeed, the number of species present is represented by the number of dots in each graph. We can see what we already know from the previous sections: that Figgate and Craigmillar have more species than the Meadows and Blackford. However, we can also intuitively tell about evenness (Probably more intuitively than from the SAD graphs). It is not hard to tell that since the line connecting the dots is straight, or nearly straight in the case of Blackford and Figgate, individuals are evenly distributed among species in these parks. However, the large drop between the first and the second dot in the graphs for Craigmillar and the Meadows show that these communities are uneven, and have one **highly dominant** species. 40% of all individuals belong to the same species in Craigmillar, *despite there being 20 species present*, and half of the birds observed in the Meadows were the same species. 
 
 Let's save our plot:
@@ -466,9 +467,14 @@ Well done for making it this far! There's not much left to do but to summarize w
 - How to visualise community composition with rank-abundance diagrams, and how to infer them.
 
 
+<hr>
+<hr>
+
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
-#### If you have any questions or comments about this tutorial, please contact me on s2024589@ed.ac.uk
+#### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
+
+#### <a href="INSERT_SURVEY_LINK" target="_blank">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
 
 <ul class="social-icons">
 	<li>
@@ -478,4 +484,19 @@ Well done for making it this far! There's not much left to do but to summarize w
 	</li>
 </ul>
 
-
+### &nbsp;&nbsp;Subscribe to our mailing list:
+<div class="container">
+	<div class="block">
+        <!-- subscribe form start -->
+		<div class="form-group">
+			<form action="https://getsimpleform.com/messages?form_api_token=de1ba2f2f947822946fb6e835437ec78" method="post">
+			<div class="form-group">
+				<input type='text' class="form-control" name='Email' placeholder="Email" required/>
+			</div>
+			<div>
+                        	<button class="btn btn-default" type='submit'>Subscribe</button>
+                    	</div>
+                	</form>
+		</div>
+	</div>
+</div>
