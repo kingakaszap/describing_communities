@@ -1,8 +1,9 @@
- # Describing communities in R 
+
   
  *A tutorial by Kinga Kaszap*
 
 # Tutorial Aims:
+# <p align ="center">   Describing communities in R </p>
 
 1. Learn how ecological communities can be described in R
 2. Undestand basic indices such as richness and diversity, and learn how to calculate them in R
