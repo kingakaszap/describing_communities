@@ -1,4 +1,4 @@
- #  Describing communities in R 
+ # Describing communities in R 
   
  *A tutorial by Kinga Kaszap*
 
