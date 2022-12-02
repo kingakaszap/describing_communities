@@ -1,6 +1,6 @@
- # <p align = "center">   Describing communities in R </p>
+ #  Describing communities in R 
   
-<p align ="center"> A tutorial by Kinga Kaszap </p>
+ *A tutorial by Kinga Kaszap*
 
 # Tutorial Aims:
 
@@ -472,7 +472,7 @@ Well done for making it this far! There's not much left to do but to summarize w
 - How to visualise community composition with rank-abundance diagrams, and how to infer them.
 
 
-#
+
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
