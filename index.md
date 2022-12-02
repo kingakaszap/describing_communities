@@ -82,7 +82,9 @@ Here is a picture I took at Blackford Pond when conducting a very similar projec
 
 In ecology, there is usually a big difference between the format observations are recorded in the field, and the format a programming language such as R requires to be able to work with your data. Say you collected your data on paper, trying to make somewhat of a table, while also adding notes to your observations. You had to be quick though, because the objects you observe (the birds) move quickly (how annoying!) So it is definitely not the neatest of tables. You copied your observations into Excel, exactly in the same format as you recorded them, to reduce copying errors. Now you want to start working with your data...
 
-Open RStudio, and click on `File/New File/R Script`. It is good practice to "introduce your code" - so that anyone who may look at it knows immediately whose work it is, when was it created, and for what purpose. It is also useful if you ever want to look back on your work, or find a specific script. In RStudio, you can add comments using a hashtag ( `#` ). R will interpret this as text and not attempt to run it as code.
+Open RStudio, and click on `File/New File/R Script`. If you are completely new to R, check out [this](https://ourcodingclub.github.io/tutorials/intro-to-r/) tutorial to get started - I promise it's not difficult! (In the beginning. Then it does get difficult. But let's not talk about that.)
+
+It is good practice to "introduce your code" - so that anyone who may look at it knows immediately whose work it is, when was it created, and for what purpose. It is also useful if you ever want to look back on your work, or find a specific script. In RStudio, you can add comments using a hashtag ( `#` ). R will interpret this as text and not attempt to run it as code.
 
  ``` r
     # Describing communities  (feel free to add a different title!)
@@ -145,7 +147,7 @@ Let's do some data wrangling ! We need our data to be in a very specific format 
 
 In our data, our variables for each observation are: Park (Where was the observation recorded?), Species (What bird are we talking about?) and Abundance (How many individuals of said bird did we count in the specified park?). So, we have to shorten our dataset to 3 columns instead of the current 21. We can leave the first column alone, but we need to do some work on columns 2:21!
 
-We clean our data in one command using dplyr's *fabulous* pipe ( `%>%`) operator. (Honestly, they make your life (and code) so much easier! Learn more about `dplyr` and pipes here (add CC link).
+We clean our data in one command using dplyr's *fabulous* pipe ( `%>%`) operator. (Honestly, they make your life (and code) so much easier! Learn more about `dplyr` and pipes [here](https://ourcodingclub.github.io/tutorials/data-manip-efficient/).
 
 ``` r
 parks_tidy <- parks %>% 
@@ -214,7 +216,9 @@ Your plot should look like this:
 <img src="https://user-images.githubusercontent.com/114161055/205092070-c63c280c-cd90-4306-86d1-28c9e656caaf.png" alt="image" width="450"/>
 </p>
 
-With only 4 sites, a barplot is not much different from the dataframe in terms of visualisation - however, it would show be more if we were working with larger datasets, containing, let's say, 100 sites. Remember that the aim of this tutorial is just to introduce you to exploring community composition - hence why our dataset is simple and small! Let's save our plot - we can also do this with code using `ggsave` and entering the folder within the working directory we want to save it to.
+With only 4 sites, a barplot is not much different from the dataframe in terms of visualisation - however, it would show be more if we were working with larger datasets, containing, let's say, 100 sites. Remember that the aim of this tutorial is just to introduce you to exploring community composition - hence why our dataset is simple and small! -Also, it's kind of amazing how `ggplot` can make and customize plots from basically nothing. If you are also fascinated by `ggplot`, check out [this](https://ourcodingclub.github.io/tutorials/datavis/) coding club tutorial on making beautiful figures!
+
+For now, let's save our plot - we can also do this with code using `ggsave` and entering the folder within the working directory we want to save it to.
 
 ``` r
 ggsave(barplot_richness, file = "outputs/richnessplot.png", width = 6, height = 6)
@@ -423,6 +427,8 @@ parks_rankabundance <- parks_tidy %>%
 Above, we used `mutate` to make new columns. Within the `mutate` command, we used `rank` and `-` to rank abundances in descending order. As each species should have a unique rank for our plots, we used `ties.method="random"` to assign a rank at random between species with equal number of individuals.
 
 You might remember that before, we did not make a new dataframe when we added a column. However, we did now to keep the original dataframe concise - as rank is not really a relevant metric for any other purpose than making these plots, whereas the relative abundance column we added when we overwrote the tidy dataframe was used continuously throughout the tutorial.
+
+One last thing to note before we make our final plot is the `ungroup()` function. You might have noticed that at the end of **each pipe**, we ungroup the dataset. Since we group by `site` in nearly all cases, this might seem counter-intuitive - why remove the grouping if we are going to regroup again? The simplest answer is to avoid confusion - when we group by a variable, the way the dataset looks like in the RStudio interface doesn't change - in other words, only R "knows" how it is grouped. This way it is *very easy* to confuse yourself and lose track of how your data are grouped, and get really annoying errors. To avoid this, it's generally good practice to remove any groupings at the end of your pipes.
 
 Now, let's make our plots!
 
