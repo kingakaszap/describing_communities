@@ -1,6 +1,6 @@
 # Describing communities in R
 
-This repository comntains all material you need to complete the "Describing communities" tutorial.
+This repository contains all material you need to complete the "Describing communities" tutorial.
 
 Click [here](https://kingakaszap.github.io/describing_communities/) to get started!
 
