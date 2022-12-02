@@ -24,6 +24,6 @@ The [script](script) folder contains the R code used in the tutorial.
 
 The [index](index.md) file holds the markdown version of the tutorial.
 
-The [references](references.md) includes references of all papers and websites I used when creating this tutorial. 
+The [references](references.md) markdown file includes references of all papers and websites I used when creating this tutorial. 
 
 
